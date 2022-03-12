@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const fileupload = require('express-fileupload');
-
-const PORT = 3100;
+const PORT = process.env.PORT;
 
 const usersRouter = require('./routes/users');
 
@@ -29,6 +29,14 @@ app.use('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Api is running on port ${PORT}!`);
+});
+
+app.use((error, req, res, next) => {
+  if (process.env.ENV !== 'production') {
+    return res.status(500).json({ error: error.message, stack: error.stack });
+  }
+
+  return res.status(500).json({ error: 'Internal server error.' });
 });
 
 module.exports = app;

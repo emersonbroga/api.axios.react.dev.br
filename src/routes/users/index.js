@@ -5,7 +5,7 @@ const router = express.Router();
 const Users = require('../../services/users');
 const Strings = require('../../services/strings');
 
-const UPLOAD_URL = 'http://localhost:3001/uploads/user';
+const UPLOAD_URL = `${process.env.BASE_URL}uploads/user`;
 const UPLOAD_FOLDER = path.resolve(__dirname, '../../public/uploads/user');
 const RADIX = 10;
 
