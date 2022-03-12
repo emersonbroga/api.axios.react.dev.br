@@ -89,4 +89,4 @@ for (let i = 0; i < result.length; i++) {
   result[i] = generateEntry(i + 1);
 }
 
-fs.writeFileSync('users.json', JSON.stringify(result, null, 2), 'utf-8');
+fs.writeFileSync('src/data/users.json', JSON.stringify(result, null, 2), 'utf-8');
