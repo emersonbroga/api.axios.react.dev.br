@@ -25,11 +25,11 @@ app.use(fileupload({ safeFileNames: true, preserveExtension: true, createParentP
 app.use('/v1/users/', usersRouter);
 
 app.use('/', (req, res) => {
-  return res.send(`Api is running on ${BASE_URL}!`);
+  return res.send(`Api is running at ${BASE_URL}!`);
 });
 
 app.listen(PORT, () => {
-  console.log(`Api is running on ${BASE_URL}!`);
+  console.log(`Api is running at ${BASE_URL}!`);
 });
 
 app.use((error, req, res, next) => {

@@ -6,7 +6,7 @@ const Users = require('../../services/users');
 const Strings = require('../../services/strings');
 
 const UPLOAD_URL = `${process.env.BASE_URL}uploads/user`;
-const UPLOAD_FOLDER = path.resolve(__dirname, '../../public/uploads/user');
+const UPLOAD_FOLDER = path.resolve(__dirname, '../../../public/uploads/user');
 const RADIX = 10;
 
 router.get('/:id', async function (req, res) {
