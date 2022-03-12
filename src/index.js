@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const fileupload = require('express-fileupload');
 const PORT = process.env.PORT;
+const BASE_URL = process.env.BASE_URL;
 
 const usersRouter = require('./routes/users');
 
@@ -18,17 +19,17 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(fileupload({ safeFileNames: true, preserveExtension: true, createParentPath: true }));
 
 app.use('/v1/users/', usersRouter);
 
 app.use('/', (req, res) => {
-  return res.send(`Api is running on port ${PORT}!`);
+  return res.send(`Api is running on ${BASE_URL}!`);
 });
 
 app.listen(PORT, () => {
-  console.log(`Api is running on port ${PORT}!`);
+  console.log(`Api is running on ${BASE_URL}!`);
 });
 
 app.use((error, req, res, next) => {

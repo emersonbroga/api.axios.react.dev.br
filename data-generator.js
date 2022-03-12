@@ -84,7 +84,7 @@ const generateEntry = (id) => {
   };
 };
 
-const result = new Array(5);
+const result = new Array(100);
 for (let i = 0; i < result.length; i++) {
   result[i] = generateEntry(i + 1);
 }
