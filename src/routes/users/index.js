@@ -21,14 +21,14 @@ router.get('/:id', async function (req, res) {
 router.put('/:id', async function (req, res) {
   const id = Number.parseInt(req.params.id, RADIX);
 
-  const user = await Users.update(id, { ...req.body, id });
+  const user = await Users.update(id, { ...req.body, id }, true);
 
   if (!user) return res.status(404).json({ data: null });
 
   return res.status(200).json(user);
 });
 
-router.put('/:id/upload', async function (req, res) {
+router.patch('/:id/upload', async function (req, res) {
   if (!req.files) return res.status(400).json({ data: null });
   const uuid = Strings.uuidv4();
 

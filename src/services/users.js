@@ -58,14 +58,14 @@ const create = async (data) => {
   return createdUser;
 };
 
-const update = async (id, data) => {
+const update = async (id, data, replace = false) => {
   const users = await JSONRead(PATH);
   const index = users.findIndex((item) => item.id === id);
   const user = users[index];
 
   if (!user) return null;
 
-  const updatedUser = { ...user, ...data, id };
+  const updatedUser = replace ? { ...data, id } : { ...user, ...data, id };
   users.splice(index, 1, updatedUser);
 
   await JSONWrite(PATH, users);
