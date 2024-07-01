@@ -1,2 +1,2 @@
-const { generate } = require('./services/users');
-generate('./data/users.json');
+const { generate } = require("./src/services/users");
+generate("./src/data/users.json");
